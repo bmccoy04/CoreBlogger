@@ -1,0 +1,78 @@
+body {
+    /* padding-top: 50px;
+    padding-bottom: 20px; */
+    background-color: #FBF5F3;
+    margin: 0;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navigation {
+    color: #FBF5F3;
+    background-color: #C16323;
+    line-height: 50px;
+}
+
+.navigation-menu,
+.navigation-menu ul,
+.navigation-menu ul li {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.navigation-menu,
+.navigation-name,
+.content {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.navigation-name{
+    float: left;
+    margin: 3px;
+}
+.navigation-menu {
+    text-align: right;
+    float: right;
+}
+
+.navigation-menu  ul  li {
+    list-style-type: none;
+    display: inline;
+    margin-left: 15px;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.content {
+
+}
+
+
+/* Themes maybe */
+/* link: https://coolors.co/c16323-fbf5f3-e2dadb-dae2df-a2a7a5 */
+.color-theme-one {
+    color: #C16323;
+    color: #FBF5F3;
+    color: #E2DADB;
+    color: #DAE2DF;
+    color: #A2A7A5;
+}
+
+/* link: https://coolors.co/c16323-fbf5f3-283d3b-197278-edddd4 */
+.color-theme-two {
+    color: #C16323;
+    color: #FBF5F3;
+    color: #283D3B;
+    color: #197278;
+    color: #EDDDD4;
+}
+
