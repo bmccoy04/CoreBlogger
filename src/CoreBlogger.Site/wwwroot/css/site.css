@@ -1,7 +1,7 @@
 body {
     /* padding-top: 50px;
     padding-bottom: 20px; */
-    background-color: #FBF5F3;
+    background-color: #fcfafa;
     margin: 0;
 }
 
@@ -13,8 +13,8 @@ body {
 }
 
 .navigation {
-    color: #FBF5F3;
-    background-color: #C16323;
+    color: #FEFFFF;
+    background-color: #2b7a78;
     line-height: 50px;
 }
 
@@ -27,8 +27,7 @@ body {
 
 
 .navigation-menu,
-.navigation-name,
-.content {
+.navigation-name {
     padding-left: 25px;
     padding-right: 25px;
 }
@@ -75,4 +74,17 @@ body {
     color: #197278;
     color: #EDDDD4;
 }
+.color-theme-three {
+    color: #17252A;
+    color: #2b7a78;
+    color: #3AAFA9;
+    color: #DEF2F1;
+    color: #f2f3f3;
+    color: #FEFFFF;
+}
 
+.home {
+    border-color: rgb(135, 146, 146);
+    border-style: solid;
+    border-width: 1px;
+}
