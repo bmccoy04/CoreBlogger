@@ -14,7 +14,7 @@ body {
 
 .navigation {
     color: #FEFFFF;
-    background-color: #2b7a78;
+    background-color: #2B4C6F;
     line-height: 50px;
 }
 
@@ -80,6 +80,16 @@ body {
     color: #3AAFA9;
     color: #DEF2F1;
     color: #f2f3f3;
+    color: #FEFFFF;
+}
+
+
+.color-theme-four {
+    color: #000D18;
+    color: #0065CE;
+    color: #2B4C6F;
+    color: #1E1E1E;
+    color: #D3D3D3;
     color: #FEFFFF;
 }
 
