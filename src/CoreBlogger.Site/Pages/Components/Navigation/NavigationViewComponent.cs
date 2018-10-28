@@ -1,0 +1,22 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CoreBlogger.Site.Components.Navigation
+{
+    public class NavigationViewComponent : ViewComponent
+    {
+
+        public NavigationViewComponent()
+        {
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View();
+        }
+    }
+}

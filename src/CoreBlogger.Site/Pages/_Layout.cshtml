@@ -1,3 +1,5 @@
+@addTagHelper *, CoreBlogger.Site
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,27 +16,7 @@
     </environment> -->
 </head>
 <body>
-    <div class="navigation">
-        <div class="navigation-name">Bryan McCoy</div>
-        <div class="navigation-menu">
-            <ul>
-                <li>
-                    Home
-                </li>
-                <li>
-                    About
-                </li>
-                <li>
-                    Blog
-                </li>
-                <li>
-                    Speaking
-                </li>
-            </ul>
-        </div>
-        <div class="clear-both">
-        </div>
-    </div>
+    <vc:navigation></vc:navigation>    
     <div class="content">
         @RenderBody()
         <hr />

@@ -47,6 +47,11 @@ body {
     margin-left: 15px;
 }
 
+.navigation-menu a {
+    color: white;
+    text-decoration: none;
+}
+
 .clear-both {
     clear: both;
 }
