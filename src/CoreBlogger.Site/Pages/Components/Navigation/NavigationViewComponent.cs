@@ -14,7 +14,7 @@ namespace CoreBlogger.Site.Components.Navigation
         {
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public IViewComponentResult Invoke()
         {
             return View();
         }
