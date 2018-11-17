@@ -27,7 +27,10 @@ namespace CoreBlogger.Site.Pages
             try 
             {
                 var httpClient = new HttpClient();
-                var response = httpClient.GetStringAsync("https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/");
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
+                //var response = httpClient.GetStringAsync("https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/");
+                //var response = httpClient.GetStringAsync("https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/Test!.md");
+                var response = httpClient.GetStringAsync("https://raw.githubusercontent.com/bmccoy04/CoreBlogger/master/BlogEntries/Test!.md");
                 
                 Blogs = await response;
             } 
