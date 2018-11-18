@@ -1,5 +1,7 @@
 ﻿@page
 @model IndexModel
+@using Westwind.AspNetCore.Markdown
+
 @{
     ViewData["Title"] = "Home page";
 }
@@ -19,7 +21,21 @@
     <h1>Bryan's Blog</h1>
 </div>
 <div>
-    @Model.Blogs
+
+    @foreach(var blog in Model.Blogs)
+    {
+        <div style="padding:25px 25px 25px 25px; 
+            background-color:#FEFFFF; 
+            color:#1E1E1E;
+            margin:15px;
+            "
+            class="home">
+            @Markdown.ParseHtmlString(@blog)            
+        </div>
+    }
+
     @Model.ErrorMessage
+</div>
+<div>
 </div>
 <br />
