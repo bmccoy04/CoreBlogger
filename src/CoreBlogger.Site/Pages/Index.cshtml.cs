@@ -35,7 +35,6 @@ namespace CoreBlogger.Site.Pages
             try 
             {
                 var items = await _gitHubEntryClient.GetEntries();
-                var re = "";
                 foreach (var item in items)
                 {
                     _logger.LogInformation(item.Name);
