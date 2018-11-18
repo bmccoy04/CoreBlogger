@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MediatR;
+using MediatR.Pipeline;
+using CoreBlogger.Core.Handlers;
+using CoreBlogger.Core.Queries;
 
 namespace CoreBlogger.Site
 {
@@ -21,6 +25,8 @@ namespace CoreBlogger.Site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR();
+            services.AddTransient<IRequestHandler<GetBlogEntriesQuery, string>, GetBlogEntriesHandler>();
             services.AddLogging();
             services.AddMvc();
         }

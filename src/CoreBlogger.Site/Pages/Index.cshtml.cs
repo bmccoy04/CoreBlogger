@@ -9,12 +9,15 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using CoreBlogger.Core.Clients;
 using CoreBlogger.Core.Models;
+using MediatR;
+using CoreBlogger.Core.Queries;
 
 namespace CoreBlogger.Site.Pages
 {
     public class IndexModel : PageModel
     {
         private ILogger<IndexModel> _logger;
+        private IMediator _mediator;
         private GitHubEntryClient _gitHubEntryClient;
 
         private const string baseUrl = "https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/";
@@ -22,10 +25,11 @@ namespace CoreBlogger.Site.Pages
         public IList<string> Blogs { get; set; }
         public string ErrorMessage { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, IMediator mediator)
         {
             _logger = logger;
             _gitHubEntryClient = new GitHubEntryClient(baseUrl, new HttpClient());
+            _mediator = mediator;
             Blogs = new List<string>();
         }
 
@@ -34,6 +38,7 @@ namespace CoreBlogger.Site.Pages
             
             try 
             {
+                var blogEntires = await _mediator.Send(new GetBlogEntriesQuery());
                 var items = await _gitHubEntryClient.GetEntries();
                 foreach (var item in items)
                 {
