@@ -10,6 +10,7 @@
     <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.0.36" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CoreBlogger.Core\CoreBLogger.Core.csproj" />
+    <ProjectReference Include="..\CoreBlogger.Core\CoreBlogger.Core.csproj" />
+    <ProjectReference Include="..\CoreBlogger.Core\CoreBlogger.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

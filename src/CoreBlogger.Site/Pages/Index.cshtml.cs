@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using CoreBlogger.Core.Clients;
+using CoreBlogger.Core.Providers;
 using CoreBlogger.Core.Models;
 using MediatR;
 using CoreBlogger.Core.Queries;
+using CoreBlogger.Core.Interfaces;
 
 namespace CoreBlogger.Site.Pages
 {
@@ -18,17 +19,17 @@ namespace CoreBlogger.Site.Pages
     {
         private ILogger<IndexModel> _logger;
         private IMediator _mediator;
-        private GitHubEntryClient _gitHubEntryClient;
+        private IGitHubEntryProvider _gitHubEntryProvider;
 
         private const string baseUrl = "https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/";
 
         public IList<string> Blogs { get; set; }
         public string ErrorMessage { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IMediator mediator)
+        public IndexModel(ILogger<IndexModel> logger, IMediator mediator, IGitHubEntryProvider entryProvider)
         {
             _logger = logger;
-            _gitHubEntryClient = new GitHubEntryClient(baseUrl, new HttpClient());
+            _gitHubEntryProvider = entryProvider;
             _mediator = mediator;
             Blogs = new List<string>();
         }
@@ -39,12 +40,12 @@ namespace CoreBlogger.Site.Pages
             try 
             {
                 var blogEntires = await _mediator.Send(new GetBlogEntriesQuery());
-                var items = await _gitHubEntryClient.GetEntries();
+                var items = await _gitHubEntryProvider.GetEntries();
                 foreach (var item in items)
                 {
                     _logger.LogInformation(item.Name);
 
-                    this.Blogs.Add(await _gitHubEntryClient.GetEntryContent(item));
+                    this.Blogs.Add(await _gitHubEntryProvider.DownloadContent(item));
                 }
             } 
             catch (Exception ex)

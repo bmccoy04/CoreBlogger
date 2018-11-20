@@ -27,6 +27,7 @@ namespace CoreBlogger.Site
         {
             services.AddMediatR();
             services.AddTransient<IRequestHandler<GetBlogEntriesQuery, string>, GetBlogEntriesHandler>();
+            services.AddHttpClient();
             services.AddLogging();
             services.AddMvc();
         }

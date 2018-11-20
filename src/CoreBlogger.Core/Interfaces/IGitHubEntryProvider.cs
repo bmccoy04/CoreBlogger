@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CoreBlogger.Core.Models;
 
-namespace CoreBLogger.Core.Interfaces
+namespace CoreBlogger.Core.Interfaces
 {
-    public interface IGitHubEntryClient
+    public interface IGitHubEntryProvider
     {
         Task<IList<GitHubEntry>> GetEntries();
+
+        Task<string> DownloadContent(GitHubEntry entry);
     }
 }

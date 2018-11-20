@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using CoreBlogger.Core.Models;
-using CoreBLogger.Core.Interfaces;
+using CoreBlogger.Core.Interfaces;
 using Newtonsoft.Json;
 
-namespace CoreBlogger.Core.Clients
+namespace CoreBlogger.Core.Providers
 {
-    public class GitHubEntryClient : IGitHubEntryClient
+    public class GitHubEntryProvider : IGitHubEntryProvider
     {
-        private string _url;
-        private HttpClient _httpClient;
+        private IGitHubClient _gitHubClient;
 
-        public GitHubEntryClient(string url, HttpClient httpClientFactory)
+        public GitHubEntryProvider(IGitHubClient gitHubClient)
         {
-            _url = url;
             //_httpClient = httpClientFactory.CreateClient();
-            _httpClient = httpClientFactory; // Change this to use HTTPClientFactory when you refactor
-            _httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
+            _gitHubClient = gitHubClient;
         }
 
         public async Task<IList<GitHubEntry>> GetEntries()
@@ -29,15 +26,15 @@ namespace CoreBlogger.Core.Clients
 
                
                 
-                var content = await _httpClient.GetStringAsync(_url);                
-                var items = JsonConvert.DeserializeObject<List<GitHubEntry>>(content);
-                
+                //var content = await _httpClient.GetStringAsync(_url);                
+                //var items = JsonConvert.DeserializeObject<List<GitHubEntry>>(content);
+                var items = await _gitHubClient.GetEntriesAsync<List<GitHubEntry>>();
                 return items;
         }
 
-        public async Task<string> GetEntryContent(GitHubEntry entry)
+        public async Task<string> DownloadContent(GitHubEntry entry)
         {
-            return await _httpClient.GetStringAsync(entry.DownloadUrl);
+            return await _gitHubClient.DownloadContent(entry.DownloadUrl);
         }
     }       
 }
