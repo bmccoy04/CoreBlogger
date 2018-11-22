@@ -11,6 +11,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoreBlogger.Core\CoreBlogger.Core.csproj" />
-    <ProjectReference Include="..\CoreBlogger.Core\CoreBlogger.Infrastructure.csproj" />
+    <ProjectReference Include="..\CoreBlogger.Infrastructure\CoreBlogger.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

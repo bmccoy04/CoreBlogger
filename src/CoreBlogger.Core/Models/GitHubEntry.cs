@@ -5,9 +5,17 @@ namespace CoreBlogger.Core.Models
 {
     public class GitHubEntry
     {
-        public string Name { get; set; }
-        public string Path { get; set; }
-        public string Sha { get; set; }
+
+        public GitHubEntry(string name, string path, string sha, string downloadUrl)
+        {
+            Name = name;
+            Path = path;
+            Sha = sha;
+            DownloadUrl = downloadUrl;
+        }
+        public string Name { get; private set; }
+        public string Path { get; private set; }
+        public string Sha { get; private set; }
         public string Url { get; set; }
 
         [JsonProperty("html_url")]
@@ -15,7 +23,7 @@ namespace CoreBlogger.Core.Models
         [JsonProperty("git_url")]
         public string GitUrl { get; set; }
         [JsonProperty("download_url")]
-        public string DownloadUrl { get; set; }
+        public string DownloadUrl { get; private set; }
         public string Type { get; set; }
     }
 }

@@ -10,6 +10,9 @@ using MediatR;
 using MediatR.Pipeline;
 using CoreBlogger.Core.Handlers;
 using CoreBlogger.Core.Queries;
+using CoreBlogger.Core.Interfaces;
+using CoreBlogger.Core.Providers;
+using CoreBlogger.Infrastructure.Clients;
 
 namespace CoreBlogger.Site
 {
@@ -27,6 +30,8 @@ namespace CoreBlogger.Site
         {
             services.AddMediatR();
             services.AddTransient<IRequestHandler<GetBlogEntriesQuery, string>, GetBlogEntriesHandler>();
+            services.AddTransient<IGitHubEntryProvider, GitHubEntryProvider>();
+            services.AddTransient<IGitHubClient, GitHubClient>();
             services.AddHttpClient();
             services.AddLogging();
             services.AddMvc();
