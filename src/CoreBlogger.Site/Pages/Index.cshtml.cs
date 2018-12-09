@@ -19,17 +19,12 @@ namespace CoreBlogger.Site.Pages
     {
         private ILogger<IndexModel> _logger;
         private IMediator _mediator;
-        private IGitHubEntryProvider _gitHubEntryProvider;
-
-        private const string baseUrl = "https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/";
-
         public IList<string> Blogs { get; set; }
         public string ErrorMessage { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IMediator mediator, IGitHubEntryProvider entryProvider)
+        public IndexModel(ILogger<IndexModel> logger, IMediator mediator)
         {
             _logger = logger;
-            _gitHubEntryProvider = entryProvider;
             _mediator = mediator;
             Blogs = new List<string>();
         }
@@ -40,12 +35,11 @@ namespace CoreBlogger.Site.Pages
             try 
             {
                 var blogEntires = await _mediator.Send(new GetBlogEntriesQuery());
-                var items = await _gitHubEntryProvider.GetEntries();
-                foreach (var item in items)
+                
+                foreach (var blogEntry in blogEntires)
                 {
-                    _logger.LogInformation(item.Name);
-
-                    this.Blogs.Add(await _gitHubEntryProvider.DownloadContent(item));
+                    _logger.LogDebug(JsonConvert.SerializeObject(blogEntry.GitHubBlogEntryMetaData));
+                    this.Blogs.Add(blogEntry.PreviewContent);
                 }
             } 
             catch (Exception ex)

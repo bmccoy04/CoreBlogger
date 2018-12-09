@@ -18,7 +18,7 @@ namespace CoreBlogger.Core.Providers
             _gitHubClient = gitHubClient;
         }
 
-        public async Task<IList<GitHubEntry>> GetEntries()
+        public async Task<IList<GitHubBlogEntry>> GetEntries()
         {
                 //var response = httpClient.GetStringAsync("https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/");
                 //var response = httpClient.GetStringAsync("https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/Test!.md");
@@ -28,11 +28,11 @@ namespace CoreBlogger.Core.Providers
                 
                 //var content = await _httpClient.GetStringAsync(_url);                
                 //var items = JsonConvert.DeserializeObject<List<GitHubEntry>>(content);
-                var items = await _gitHubClient.GetEntriesAsync<List<GitHubEntry>>();
+                var items = await _gitHubClient.GetEntriesAsync<List<GitHubBlogEntry>>();
                 return items;
         }
 
-        public async Task<string> DownloadContent(GitHubEntry entry)
+        public async Task<string> DownloadContent(GitHubBlogEntry entry)
         {
             return await _gitHubClient.DownloadContent(entry.DownloadUrl);
         }

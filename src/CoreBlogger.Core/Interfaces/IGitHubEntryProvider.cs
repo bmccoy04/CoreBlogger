@@ -7,8 +7,8 @@ namespace CoreBlogger.Core.Interfaces
 {
     public interface IGitHubEntryProvider
     {
-        Task<IList<GitHubEntry>> GetEntries();
+        Task<IList<GitHubBlogEntry>> GetEntries();
 
-        Task<string> DownloadContent(GitHubEntry entry);
+        Task<string> DownloadContent(GitHubBlogEntry entry);
     }
 }

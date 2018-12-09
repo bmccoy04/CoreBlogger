@@ -13,6 +13,7 @@ using CoreBlogger.Core.Queries;
 using CoreBlogger.Core.Interfaces;
 using CoreBlogger.Core.Providers;
 using CoreBlogger.Infrastructure.Clients;
+using CoreBlogger.Core.Models;
 
 namespace CoreBlogger.Site
 {
@@ -29,7 +30,7 @@ namespace CoreBlogger.Site
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR();
-            services.AddTransient<IRequestHandler<GetBlogEntriesQuery, string>, GetBlogEntriesHandler>();
+            services.AddTransient<IRequestHandler<GetBlogEntriesQuery, IList<GitHubBlogEntry>>, GetBlogEntriesHandler>();
             services.AddTransient<IGitHubEntryProvider, GitHubEntryProvider>();
             services.AddTransient<IGitHubClient, GitHubClient>();
             services.AddHttpClient();
