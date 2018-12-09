@@ -30,7 +30,8 @@
             margin:15px;
             "
             class="home">
-            @Markdown.ParseHtmlString(@blog)            
+            @Markdown.ParseHtmlString(@blog.Preview)
+            <a asp-page="/Blogs/Index"  asp-route-id="@blog.DateString">Read More...</a>
         </div>
     }
 

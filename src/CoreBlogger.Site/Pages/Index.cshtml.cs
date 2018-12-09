@@ -12,6 +12,7 @@ using CoreBlogger.Core.Models;
 using MediatR;
 using CoreBlogger.Core.Queries;
 using CoreBlogger.Core.Interfaces;
+using CoreBlogger.Site.Models;
 
 namespace CoreBlogger.Site.Pages
 {
@@ -19,14 +20,14 @@ namespace CoreBlogger.Site.Pages
     {
         private ILogger<IndexModel> _logger;
         private IMediator _mediator;
-        public IList<string> Blogs { get; set; }
+        public IList<BlogPreviewVm> Blogs { get; set; }
         public string ErrorMessage { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IMediator mediator)
         {
             _logger = logger;
             _mediator = mediator;
-            Blogs = new List<string>();
+            Blogs = new List<BlogPreviewVm>();
         }
 
         public async Task OnGetAsync()
@@ -38,8 +39,7 @@ namespace CoreBlogger.Site.Pages
                 
                 foreach (var blogEntry in blogEntires)
                 {
-                    _logger.LogDebug(JsonConvert.SerializeObject(blogEntry.GitHubBlogEntryMetaData));
-                    this.Blogs.Add(blogEntry.PreviewContent);
+                    this.Blogs.Add(new BlogPreviewVm(blogEntry.PreviewContent, blogEntry.GitHubBlogEntryMetaData.Date));
                 }
             } 
             catch (Exception ex)
