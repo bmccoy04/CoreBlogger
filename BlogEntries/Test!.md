@@ -1,9 +1,11 @@
 <!---
-    Author: Bryan McCoy
-    Title: Test !
-    Date: 12/9/2018
-    Tags: First Post, Test
-    Live: Yes
+    ::::
+    ::  Author: Bryan McCoy
+    ::  Title: Test !
+    ::  Date: 12/9/2018
+    ::  Tags: First Post, Test
+    ::  Live: Yes
+    ::::
 --->
 
 # Test !

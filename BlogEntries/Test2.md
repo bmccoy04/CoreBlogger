@@ -1,9 +1,11 @@
 <!---
-    Author: Bryan McCoy
-    Title: Test 2
-    Date: 12/10/2018
-    Tags: Second Post, Test
-    Live: Yes
+    ::::
+    ::    Author: Bryan McCoy
+    ::    Title: Test 2
+    ::    Date: 12/10/2018
+    ::    Tags: Second Post, Test
+    ::    Live: Yes
+    ::::
 --->
 
 # Test 2
