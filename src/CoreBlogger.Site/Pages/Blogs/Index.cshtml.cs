@@ -12,7 +12,10 @@ namespace CoreBlogger.Site.Pages.Blogs
 
         public void OnGet(string id)
         {
-            this.Message = id;
+            if(String.IsNullOrEmpty(id))
+                this.Message = "NONe";
+            else
+                this.Message = id;
         }
     }
 }
