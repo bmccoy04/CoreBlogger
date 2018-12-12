@@ -27,7 +27,7 @@ namespace CoreBlogger.Site.Pages.Blogs
             _mediator = mediator;
         }
 
-        public async void OnGetAsync(string id)
+        public async Task OnGetAsync(string id)
         {
             try 
             {
