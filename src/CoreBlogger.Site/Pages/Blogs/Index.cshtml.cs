@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoreBlogger.Core.Queries;
 using CoreBlogger.Site.Models;
+using CoreBlogger.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -31,8 +32,7 @@ namespace CoreBlogger.Site.Pages.Blogs
         {
             try 
             {
-                if(!String.IsNullOrEmpty(id))
-                    this.BlogVm = await GetBlogVm(id);
+                this.BlogVm = await GetBlogVm(id);
 
                 this.Message = id + this.BlogVm;
             } 
@@ -47,7 +47,13 @@ namespace CoreBlogger.Site.Pages.Blogs
         private async Task<BlogVm> GetBlogVm(string id)
         {
             var entries = await _mediator.Send(new GetBlogEntriesQuery());
-            var entry = entries.FirstOrDefault(x => x.GitHubBlogEntryMetaData.Date.ToString("yyyyMMdd") == id);
+            var entry = new GitHubBlogEntry();
+        
+            if(String.IsNullOrWhiteSpace(id))
+                entry = entries.LastOrDefault();
+            else
+                entry = entries.FirstOrDefault(x => x.GitHubBlogEntryMetaData.Date.ToString("yyyyMMdd") == id);
+        
             var index = entries.IndexOf(entry);
             var previousId = String.Empty;
             var nextId = string.Empty;

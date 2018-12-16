@@ -5,6 +5,11 @@ namespace CoreBlogger.Core.Models
 {
     public class GitHubBlogEntry
     {
+        public GitHubBlogEntry()
+        {
+            
+        }
+
         public GitHubBlogEntry(string name, string path, string sha, string downloadUrl)
         {
             Name = name;

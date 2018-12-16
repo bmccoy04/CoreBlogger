@@ -13,5 +13,7 @@ namespace CoreBlogger.Site.Models
         public string Content { get; private set; } 
         public string PreviousBlogId { get; private set; }
         public string NextBlogId { get; private set; }
+        public bool HasPreviousBlogId => !String.IsNullOrWhiteSpace(this.PreviousBlogId);
+        public bool HasNextBlogId => !String.IsNullOrWhiteSpace(this.NextBlogId);
     }
 }
