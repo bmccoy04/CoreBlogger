@@ -1,27 +1,33 @@
 @page "{id?}"
 @model IndexModel
+@using Westwind.AspNetCore.Markdown
 
-<h3>Blog!!!</h3>
+<div style="padding:25px 25px 25px 25px; 
+    background-color:#FEFFFF; 
+    color:#1E1E1E;
+    margin:15px;
+    "
+    class="home">
+    @Markdown.ParseHtmlString(@Model.BlogVm.Content)
+        </div>
 
-    @Model.BlogVm.Content
-
-<p></p>
-
-(Model.BlogVm.HasPreviousBlogId ? 'disabled' : 'enabled')
-@if(Model.BlogVm.HasPreviousBlogId)
-{
-    <a asp-page="/Blogs/Index" asp-route-id="@Model.BlogVm.PreviousBlogId"><-- Previous</a>
-} 
-else
-{
-    <span ><-- Previous</span>
-}
- - 
-@if(Model.BlogVm.HasNextBlogId)
-{
-    <a asp-page="/Blogs/Index"  asp-route-id="@Model.BlogVm.NextBlogId">Next --></a>
-} 
-else
-{
-        <span >Next --></span>
-}
+    
+<div style="text-align:center">
+    @if(Model.BlogVm.HasPreviousBlogId)
+    {
+        <a asp-page="/Blogs/Index" asp-route-id="@Model.BlogVm.PreviousBlogId"><-- Previous</a>
+    } 
+    else
+    {
+        <span ><-- Previous</span>
+    }
+    - 
+    @if(Model.BlogVm.HasNextBlogId)
+    {
+        <a asp-page="/Blogs/Index"  asp-route-id="@Model.BlogVm.NextBlogId">Next --></a>
+    } 
+    else
+    {
+            <span >Next --></span>
+    }
+</div>

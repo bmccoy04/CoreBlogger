@@ -33,8 +33,11 @@ namespace CoreBlogger.Site
             services.AddTransient<IRequestHandler<GetBlogEntriesQuery, IList<GitHubBlogEntry>>, GetBlogEntriesHandler>();
             services.AddTransient<IGitHubEntryProvider, GitHubEntryProvider>();
             services.AddTransient<IGitHubClient, GitHubClient>();
+            services.AddTransient<ICachedGitHubEntryProvider, CachedGitHubEntryProvider>();
+            services.AddTransient<IApplicationCacheProvider, ApplicationCacheProvider>();
             services.AddHttpClient();
             services.AddLogging();
+            services.AddMemoryCache();
             services.AddMvc();
         }
 

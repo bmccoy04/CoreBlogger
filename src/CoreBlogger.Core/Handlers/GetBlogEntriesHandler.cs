@@ -14,9 +14,9 @@ namespace CoreBlogger.Core.Handlers
     public class GetBlogEntriesHandler : IRequestHandler<GetBlogEntriesQuery, IList<GitHubBlogEntry>>
     {
         private readonly ILogger<GetBlogEntriesHandler> _logger;
-        private readonly IGitHubEntryProvider _gitHubEntryProvider;
+        private readonly ICachedGitHubEntryProvider _gitHubEntryProvider;
 
-        public GetBlogEntriesHandler(ILogger<GetBlogEntriesHandler> logger, IGitHubEntryProvider gitHubEntryProvider)
+        public GetBlogEntriesHandler(ILogger<GetBlogEntriesHandler> logger, ICachedGitHubEntryProvider gitHubEntryProvider)
         {
             _logger = logger;
             _gitHubEntryProvider = gitHubEntryProvider;
@@ -24,14 +24,9 @@ namespace CoreBlogger.Core.Handlers
 
         public async Task<IList<GitHubBlogEntry>> Handle(GetBlogEntriesQuery request, CancellationToken cancellationToken)
         {
-            var entries = await _gitHubEntryProvider.GetEntries();
+            var entries = _gitHubEntryProvider.GetEntries();
 
-            foreach (var entry in entries)
-            {
-                entry.SetContent(await _gitHubEntryProvider.DownloadContent(entry));
-            }
-
-            return entries;
+            return await entries;
         }
 
     }
