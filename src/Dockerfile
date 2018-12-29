@@ -2,8 +2,6 @@ FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /app
 
 COPY . ./
-RUN pwd
-RUN ls
 
 WORKDIR /app/CoreBlogger.Site
 RUN dotnet restore
