@@ -13,5 +13,5 @@ variables:
   imageName: 'myblog:$(build.buildId)'
 
 steps:
-- script: docker build -f Dockerfile -t $(imageName) src/
+- script: docker build -f ./src/Dockerfile -t $(imageName) .
   displayName: 'docker build'
