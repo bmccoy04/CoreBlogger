@@ -10,7 +10,7 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  imageName: 'bmccoy/core-blogger-site:$(build.buildId)'
+  imageName: 'core-blogger-site'
 
 steps:
 - script: docker build -f ./src/Dockerfile -t $(imageName) ./src/
