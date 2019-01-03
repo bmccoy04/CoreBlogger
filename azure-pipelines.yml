@@ -3,8 +3,8 @@
 # Add steps that use Docker Compose, tag images, push to a registry, run an image, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-trigger:
-- master
+#trigger:
+#- master
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -13,5 +13,8 @@ variables:
   imageName: 'core-blogger-site'
 
 steps:
-- script: docker build -f ./src/Dockerfile -t $(imageName) ./src/
+- script:  docker login -u $(dockerId) -p $(pswd)
+- script: docker build -f ./src/Dockerfile -t $(dockerId)/$(imageName) ./src/
+          docker push $(dockerId)/$(imageName)
   displayName: 'docker build'
+    
