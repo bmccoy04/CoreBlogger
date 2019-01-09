@@ -26,11 +26,11 @@ body {
 }
 
 
-.navigation-menu,
+/* .navigation-menu,
 .navigation-name {
     padding-left: 25px;
     padding-right: 25px;
-}
+} */
 
 .navigation-name{
     float: left;

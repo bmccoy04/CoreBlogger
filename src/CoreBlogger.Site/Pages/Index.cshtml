@@ -15,11 +15,13 @@
 <div style="padding:25px 25px 25px 25px; 
             background-color:#FEFFFF; 
             color:#1E1E1E;
-            margin:15px;
+            margin:auto;
+            width:999px;
             "
     class="home">
     <h1>Bryan's Blog</h1>
 </div>
+<br>
 <div>
 
     @foreach(var blog in Model.Blogs)
@@ -27,12 +29,14 @@
         <div style="padding:25px 25px 25px 25px; 
             background-color:#FEFFFF; 
             color:#1E1E1E;
-            margin:15px;
+            margin:auto;
+            width:999px;
             "
             class="home">
             @Markdown.ParseHtmlString(@blog.Preview)
             <a asp-page="/Blogs/Index"  asp-route-id="@blog.DateString">Read More...</a>
         </div>
+        <br>
     }
 
     @Model.ErrorMessage
