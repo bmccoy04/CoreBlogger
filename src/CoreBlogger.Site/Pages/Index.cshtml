@@ -6,20 +6,43 @@
     ViewData["Title"] = "Home page";
 }
 
-<div style="width:100%; height:250px;background-color: #000D18; ">
-    <h1 style="line-height:250px; margin:0; padding:0; text-align:center; color:#D3D3D3;">
-        Welcome to Bryan's Tech Blog!
+<div style="width:100%; height:250px;background-color: #000D18; text-align:center; ">
+    
+    <h1 style="padding-top:75px; margin:0; text-align:center; color:#D3D3D3;">
+        Welcome to Bryan's Blog!
     </h1>
+    <br>
+    <div style="text-align:center">
+        <a href="https://www.github.com/bmccoy04" target="_blank">
+            <i class="fa fa-github-square fa-3x"></i>
+        </a>
+        <a href="https://twitter.com/bmccoy04" target="_blank">
+        <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
+        </a>    
+        <a href="https://www.linkedin.com/in/bryan-mccoy-89015464/" target="_blank">
+        <i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i>
+        </a>    
+        <a href="mailto:bryanmccoy04@gmail.com">
+        <i class="fa fa-envelope-square fa-3x" aria-hidden="true"></i>
+        </a>
+    </div>
 </div>
 <br />
 <div style="padding:25px 25px 25px 25px; 
             background-color:#FEFFFF; 
             color:#1E1E1E;
             margin:auto;
-            width:999px;
+            max-width:999px;
             "
     class="home">
-    <h1>Bryan's Blog</h1>
+    <h3>ABOUT MY BLOG</h3>
+    <p>
+        Welcome!  This blog is intended to act as a repository for my ideas, proof of concepts, and just general how to’s of software development. Over many years I have made small projects to figure out different issues or best practices.  Most of these are in my <a href="http://github.com/bmccoy04">github repository</a>. Now I have decided to blog about them in hopes that I can help others with similar ideas and issues. 
+
+    </p>
+    <p>
+        The main purpose of this blog is to actually take those ideas and implement them in a production environment.  Here we are going to use this site, that I have built, to implement those ideas together.  I will be blogging about them along the way.  So please feel free to get involved and submit a pull request or two while we improve the features of this site.  As you can see, the functionality is fairly lacking.
+    </p>
 </div>
 <br>
 <div>
@@ -30,7 +53,7 @@
             background-color:#FEFFFF; 
             color:#1E1E1E;
             margin:auto;
-            width:999px;
+            max-width:999px;
             "
             class="home">
             @Markdown.ParseHtmlString(@blog.Preview)
