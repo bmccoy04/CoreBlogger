@@ -46,7 +46,8 @@ namespace CoreBlogger.Site.Pages.Blogs
 
         private async Task<BlogVm> GetBlogVm(string id)
         {
-            var entries = await _mediator.Send(new GetBlogEntriesQuery());
+            // TODO: Refactor this into services w/ unit test.  Seems like a good example!
+            var entries = await _mediator.Send(new GetActiveBlogEntriesQuery());
             var entry = new GitHubBlogEntry();
         
             if(String.IsNullOrWhiteSpace(id))

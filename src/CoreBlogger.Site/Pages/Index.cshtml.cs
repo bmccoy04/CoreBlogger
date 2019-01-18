@@ -35,7 +35,7 @@ namespace CoreBlogger.Site.Pages
             
             try 
             {
-                var blogEntires = await _mediator.Send(new GetBlogEntriesQuery());
+                var blogEntires = await _mediator.Send(new GetActiveBlogEntriesQuery());
                 
                 foreach (var blogEntry in blogEntires)
                 {
