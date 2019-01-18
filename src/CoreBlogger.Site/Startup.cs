@@ -31,6 +31,7 @@ namespace CoreBlogger.Site
         {
             services.AddMediatR();
             services.AddTransient<IRequestHandler<GetBlogEntriesQuery, IList<GitHubBlogEntry>>, GetBlogEntriesHandler>();
+            services.AddTransient<IRequestHandler<GetActiveBlogEntriesQuery, IList<GitHubBlogEntry>>, GetActiveBlogEntriesHandler>();
             services.AddTransient<IGitHubEntryProvider, GitHubEntryProvider>();
             services.AddTransient<IGitHubClient, GitHubClient>();
             services.AddTransient<ICachedGitHubEntryProvider, CachedGitHubEntryProvider>();
