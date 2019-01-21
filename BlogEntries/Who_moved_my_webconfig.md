@@ -17,6 +17,8 @@ So, if you're coming from a pre .Net Core era you are all to familiar with the i
 
 In .Net Core there are similar methods.  We now have appsettings.json, and a ton more options.  Including the option to create your own whatever.json settings file.  Today we are going to keep it simple.  We will be looking at appsettings.json.  We will use this file to help us control where we pull blogs from depending on the ASPNETCORE_ENVIRONMENT environment variable (more on this later). 
 
+<!--- End Preview --->
+
 ## THE PROBLEM
 ---
 Well, here it is… Do you see it?
