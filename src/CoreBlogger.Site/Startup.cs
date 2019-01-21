@@ -54,6 +54,7 @@ namespace CoreBlogger.Site
                 app.UseExceptionHandler("/Error");
             }
 
+
             app.UseStaticFiles();
 
             app.UseMvc();
