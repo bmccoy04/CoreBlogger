@@ -37,7 +37,7 @@ namespace CoreBlogger.Site.Pages
             {
                 var blogEntires = await _mediator.Send(new GetActiveBlogEntriesQuery());
                 
-                foreach (var blogEntry in blogEntires)
+                foreach (var blogEntry in blogEntires.OrderByDescending(x => x.GitHubBlogEntryMetaData.Date))
                 {
                     this.Blogs.Add(new BlogPreviewVm(blogEntry.PreviewContent, blogEntry.GitHubBlogEntryMetaData.Date));
                 }
