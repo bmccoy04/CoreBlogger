@@ -3,6 +3,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using CoreBlogger.Core.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace CoreBlogger.Infrastructure.Clients
 {
@@ -11,10 +13,10 @@ namespace CoreBlogger.Infrastructure.Clients
         private HttpClient _httpClient;
         private string _url;
 
-        public GitHubClient(IHttpClientFactory httpClientFactory)
+        public GitHubClient(IHttpClientFactory httpClientFactory, ILogger<GitHubClient> logger, IConfiguration configuration)
         {
             _httpClient = httpClientFactory.CreateClient();
-            _url = "https://api.github.com/repos/bmccoy04/CoreBlogger/contents/BlogEntries/"; //Just for now, but needs to be changed
+            _url = configuration.GetValue<string>("BlogEntriesUri");
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
         }
 
