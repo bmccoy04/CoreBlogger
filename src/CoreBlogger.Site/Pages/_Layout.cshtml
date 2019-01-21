@@ -8,6 +8,18 @@
     <title>@ViewData["Title"] - Bryan's Blog</title>
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132782677-1"></script>
+
+    <environment include="Production">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-132782677-1');
+    </script>
+    </environment>
 <!-- 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/site.css" />
