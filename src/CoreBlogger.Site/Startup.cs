@@ -29,7 +29,7 @@ namespace CoreBlogger.Site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR();
+            services.AddMediatR(typeof(Startup));
             services.AddTransient<IRequestHandler<GetBlogEntriesQuery, IList<GitHubBlogEntry>>, GetBlogEntriesHandler>();
             services.AddTransient<IRequestHandler<GetActiveBlogEntriesQuery, IList<GitHubBlogEntry>>, GetActiveBlogEntriesHandler>();
             services.AddTransient<IGitHubEntryProvider, GitHubEntryProvider>();
@@ -39,7 +39,7 @@ namespace CoreBlogger.Site
             services.AddHttpClient();
             services.AddLogging();
             services.AddMemoryCache();
-            services.AddMvc();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +57,11 @@ namespace CoreBlogger.Site
 
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints => {
+                endpoints.MapRazorPages();
+            });
         }
     }
 }
