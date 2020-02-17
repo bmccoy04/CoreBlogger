@@ -20,11 +20,11 @@
 <div style="text-align:center">
     @if(Model.BlogVm.HasPreviousBlogId)
     {
-        <a asp-page="/Blogs/Index" asp-route-id="@Model.BlogVm.PreviousBlogId">-- Previous</a>
+        <a asp-page="/Blogs/Index" asp-route-id="@Model.BlogVm.PreviousBlogId">&lt;-- Previous</a>
     } 
     else
     {
-        <span >-- Previous</span> 
+        <span >&lt;-- Previous</span> 
     }
     - 
     @if(Model.BlogVm.HasNextBlogId)
