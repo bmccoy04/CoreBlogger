@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /app
 
 COPY . ./
@@ -8,7 +8,7 @@ RUN dotnet restore
 
 RUN dotnet publish -c Release -o out
 
-FROM microsoft/dotnet:2.1-aspnetcore-runtime As runtime
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 As runtime
 WORKDIR /app
 COPY --from=build /app/CoreBlogger.Site/out ./
 
