@@ -14,6 +14,7 @@ using CoreBlogger.Core.Interfaces;
 using CoreBlogger.Core.Providers;
 using CoreBlogger.Infrastructure.Clients;
 using CoreBlogger.Core.Models;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace CoreBlogger.Site
 {
@@ -54,12 +55,17 @@ namespace CoreBlogger.Site
                 app.UseExceptionHandler("/Error");
             }
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints => {
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapRazorPages();
             });
         }
