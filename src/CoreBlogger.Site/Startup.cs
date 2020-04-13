@@ -60,6 +60,8 @@ namespace CoreBlogger.Site
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
+            app.UseAuthentication();
+
             app.UseStaticFiles();
 
             app.UseRouting();
